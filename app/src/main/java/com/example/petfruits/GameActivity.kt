@@ -49,7 +49,7 @@ fun GameView() {
         modifier = Modifier.fillMaxSize()
     ){
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(id = R.drawable.taiwan),
             contentDescription = "worldwide map",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth().fillMaxHeight()
