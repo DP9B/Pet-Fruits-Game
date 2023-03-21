@@ -12,6 +12,11 @@
         android:theme="@style/Theme.PetFruits"
         tools:targetApi="31">
         <activity
+            android:name=".GameActivity"
+            android:exported="false"
+            android:label="@string/title_activity_game"
+            android:theme="@style/Theme.PetFruits" />
+        <activity
             android:name=".LogInActivity"
             android:exported="true"
             android:label="@string/title_activity_log_in"
@@ -26,9 +31,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.PetFruits">
-
-        </activity>
+            android:theme="@style/Theme.PetFruits"></activity>
     </application>
 
 </manifest>
