@@ -22,10 +22,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import com.example.petfruits.ui.theme.PetFruitsTheme
 import com.google.android.material.shape.TriangleEdgeTreatment
 
-class GameActivity : ComponentActivity() {
+class GameActivity : ViewModel() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
