@@ -27,7 +27,7 @@ class LogInActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally){
                 Button(
                     onClick = {
-                        val navigate = Intent(this@LogInActivity, GameActivity::class.java)
+                        val navigate = Intent(this@LogInActivity, MainActivity::class.java)
                         startActivity(navigate)
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White),

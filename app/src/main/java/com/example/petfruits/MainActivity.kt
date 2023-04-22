@@ -10,6 +10,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -26,9 +28,13 @@ import com.example.petfruits.ui.theme.PetFruitsTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
+import com.example.petfruits.ui.theme.Typography
 import kotlin.math.roundToInt
+import kotlin.text.Typography
 
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +42,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PetFruitsTheme {
-                DefaultPreview2()
+                val gameRepository = GameRepository()
+                val getAllData = gameRepository.getAllData()
+
+                LazyColumn(
+                    contentPadding = PaddingValues(all = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ){
+                    items(items = getAllData){gameInformation ->
+                        CustomRow(gameInformation = gameInformation)
+                    }
+                }
             }
         }
     }
@@ -47,7 +63,6 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview2() {
     PetFruitsTheme {
         BackgroundMap()
-        ButtonLists()
         TransformGestures()
     }
 }
@@ -72,55 +87,6 @@ fun BackgroundMap(){
         modifier = Modifier.fillMaxSize(),
     )
 
-}
-
-@Composable
-fun ButtonLists(){
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.End) {
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-            border = BorderStroke(0.5.dp, Color.Black),
-            modifier = Modifier.width(120.dp)
-        ) {
-            Text(text = "Game", color = Color.Black)
-        }
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-            border = BorderStroke(0.5.dp, Color.Black),
-            modifier = Modifier.width(120.dp)
-        ) {
-            Text(text = "Shop", color = Color.Black)
-        }
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-            border = BorderStroke(0.5.dp, Color.Black),
-            modifier = Modifier.width(120.dp)
-        ) {
-            Text(text = "Bag", color = Color.Black)
-        }
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-            border = BorderStroke(0.5.dp, Color.Black),
-            modifier = Modifier.width(120.dp)
-        ) {
-            Text(text = "Characters", color = Color.Black)
-        }
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-            border = BorderStroke(0.5.dp, Color.Black),
-            modifier = Modifier.width(120.dp)
-        ) {
-            Text(text = "Records", color = Color.Black)
-        }
-    }
 }
 
 @Composable
@@ -156,6 +122,33 @@ private fun TransformGestures() {
             contentDescription = "worldwide map",
             contentScale = ContentScale.FillHeight,
             modifier = Modifier.fillMaxSize(),
+        )
+    }
+}
+
+
+// Custom Row Item
+@Composable
+fun CustomRow(gameInformation: GameInformation){
+    Row(
+        modifier = Modifier
+            .background(Color.LightGray)
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ){
+        Text(
+            text = "${gameInformation.Id}",
+            color = Color.Black,
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = gameInformation.GameName,
+            color = Color.Black,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Normal
         )
     }
 }
