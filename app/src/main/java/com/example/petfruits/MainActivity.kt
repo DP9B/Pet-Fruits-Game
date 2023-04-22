@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntOffset
+import androidx.core.content.ContextCompat.startActivity
 import kotlin.math.roundToInt
 
 
@@ -85,7 +86,7 @@ fun ButtonLists(){
             border = BorderStroke(0.5.dp, Color.Black),
             modifier = Modifier.width(120.dp)
         ) {
-            Text(text = "Gift", color = Color.Black)
+            Text(text = "Game", color = Color.Black)
         }
         Button(
             onClick = {},
